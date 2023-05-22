@@ -28,7 +28,7 @@ public class BookingTest {
     }
 
     @Test
-    public void testRegisterWithEmptyEmailAddress() {
+    public void testLoginWithEmptyEmailAddress() {
         WebElement buttonContinueWithEmail = driver.findElement(By.xpath(bookingPage.buttonContinueWithEmailXpath));
         buttonContinueWithEmail.click();
 
@@ -42,7 +42,7 @@ public class BookingTest {
     }
 
     @Test
-    public void testRegisterWithIncorrectEmailAddress() {
+    public void testLoginWithIncorrectEmailAddress() {
         WebElement inputEmailAddress = driver.findElement(By.xpath(bookingPage.inputEmailAddressXpath));
         inputEmailAddress.sendKeys("email");
 
@@ -58,7 +58,7 @@ public class BookingTest {
     }
 
     @Test
-    public void testRegisterWithCorrectEmailAddress() {
+    public void testLoginWithCorrectEmailAddress() {
         WebElement inputEmailAddress = driver.findElement(By.xpath(bookingPage.inputEmailAddressXpath));
         inputEmailAddress.sendKeys("test@mail.com");
 
@@ -67,7 +67,7 @@ public class BookingTest {
 
         String expectedMessage = "Введите пароль от аккаунта Booking.com для test@mail.com.";
 
-        WebElement actualMessageXpath = (new WebDriverWait(driver,Duration.ofSeconds(10))
+        WebElement actualMessageXpath = (new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='nw-step-description']"))));
         String actualMessage = actualMessageXpath.getText();
 
@@ -75,15 +75,15 @@ public class BookingTest {
     }
 
     @Test
-    public void testRegisterWithCorrectEmailAndEmptyPassword() {
+    public void testLoginWithCorrectEmailAndEmptyPassword() {
         WebElement inputEmailAddress = driver.findElement(By.xpath(bookingPage.inputEmailAddressXpath));
         inputEmailAddress.sendKeys("test@mail.com");
 
         WebElement buttonContinueWithEmail = driver.findElement(By.xpath(bookingPage.buttonContinueWithEmailXpath));
         buttonContinueWithEmail.click();
 
-        WebElement buttonSingIn = (new WebDriverWait(driver,Duration.ofSeconds(20)).
-                until (ExpectedConditions.elementToBeClickable(By.xpath(bookingPage.buttonSingInXpath))));
+        WebElement buttonSingIn = (new WebDriverWait(driver, Duration.ofSeconds(20)).
+                until(ExpectedConditions.elementToBeClickable(By.xpath(bookingPage.buttonSingInXpath))));
         buttonSingIn.click();
 
         String expectedMessage = "Enter your Booking.com password";
@@ -95,16 +95,16 @@ public class BookingTest {
     }
 
     @Test
-    public void testRegisterWithCorrectEmailAndPassword() {
+    public void testLoginWithCorrectEmailAndPassword() {
         WebElement inputEmailAddress = driver.findElement(By.xpath(bookingPage.inputEmailAddressXpath));
         inputEmailAddress.sendKeys("test@mail.com");
 
         WebElement buttonContinueWithEmail = driver.findElement(By.xpath(bookingPage.buttonContinueWithEmailXpath));
         buttonContinueWithEmail.click();
 
-        WebElement inputPassword = (new WebDriverWait(driver,Duration.ofSeconds(10)).
-                until (ExpectedConditions.elementToBeClickable(By.xpath(bookingPage.inputPasswordXpath))));
-                inputPassword.sendKeys("12345");
+        WebElement inputPassword = (new WebDriverWait(driver, Duration.ofSeconds(10)).
+                until(ExpectedConditions.elementToBeClickable(By.xpath(bookingPage.inputPasswordXpath))));
+        inputPassword.sendKeys("12345");
 
         WebElement buttonSingIn = driver.findElement(By.xpath(bookingPage.buttonSingInXpath));
         buttonSingIn.click();
