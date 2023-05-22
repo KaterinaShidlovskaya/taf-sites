@@ -23,7 +23,7 @@ public class BookingTest {
         driver.get("https://www.booking.com/");
 
         WebElement buttonRegister = (new WebDriverWait(driver, Duration.ofSeconds(10))).
-                until(ExpectedConditions.elementToBeClickable(By.xpath(bookingPage.buttonRegisterXpath)));
+                until(ExpectedConditions.elementToBeClickable(By.xpath(bookingPage.buttonLoginXpath)));
         buttonRegister.click();
     }
 

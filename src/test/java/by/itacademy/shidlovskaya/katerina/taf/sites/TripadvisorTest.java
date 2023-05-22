@@ -19,7 +19,7 @@ public class TripadvisorTest {
     public void warmUp() {
         driver = new ChromeDriver();
         driver.get("https://www.tripadvisor.com/");
-        WebElement buttonRegister = driver.findElement(By.xpath(tripadvisorPage.buttonRegisterXpath));
+        WebElement buttonRegister = driver.findElement(By.xpath(tripadvisorPage.buttonLoginXpath));
         buttonRegister.click();
 
         WebElement buttonContinueWithEmail = (new WebDriverWait(driver, Duration.ofSeconds(20))).
