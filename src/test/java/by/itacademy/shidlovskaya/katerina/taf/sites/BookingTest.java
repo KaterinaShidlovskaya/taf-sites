@@ -15,11 +15,12 @@ import java.time.Duration;
 
 public class BookingTest {
     ChromeDriver driver;
-    BookingPage bookingPage = new BookingPage();
+    BookingPage bookingPage ;
 
     @BeforeEach
     public void warmUp() {
         driver = new ChromeDriver();
+        bookingPage = new BookingPage();
         driver.get("https://www.booking.com/");
 
         WebElement buttonRegister = (new WebDriverWait(driver, Duration.ofSeconds(10))).

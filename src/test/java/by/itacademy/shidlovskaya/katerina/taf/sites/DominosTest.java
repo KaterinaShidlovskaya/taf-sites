@@ -3,51 +3,35 @@ package by.itacademy.shidlovskaya.katerina.taf.sites;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class DominosTest {
     ChromeDriver driver;
-    DominosPage dominosPage = new DominosPage();
+    DominosPage dominosPage;
 
     @BeforeEach
     public void warmUp() {
         driver = new ChromeDriver();
-        driver.get("https://dominos.by/");
-
-        WebElement buttonPopUpClose = driver.findElement(By.xpath("/html/body/div[3]/div[2]/button"));
-        buttonPopUpClose.click();
-
-        WebElement buttonLogin = driver.findElement(By.xpath(dominosPage.buttonLoginXpath));
-        buttonLogin.click();
-
-
+        dominosPage = new DominosPage(driver);
+        driver.manage().window().maximize();
+        dominosPage.openBaseURL();
+        dominosPage.clickButtonPopUpClose();
+        dominosPage.clickButtonLogin();
     }
 
     @Test
     public void testLoginWithIncorrectEmailAndAnyPassword() {
-        WebElement inputEmail = driver.findElement(By.xpath(dominosPage.inputEmailAddressXpath));
-        inputEmail.sendKeys("email");
-
-        WebElement inputPassword = driver.findElement(By.xpath(dominosPage.inputPasswordXpath));
-        inputPassword.sendKeys("12345");
-
-        WebElement buttonSingIn = driver.findElement(By.xpath(dominosPage.buttonSingInXpath));
-        buttonSingIn.click();
+        dominosPage.sendKeysInputEmailAddress("email");
+        dominosPage.sendKeysInputPassword(Util.generatePassword());
+        dominosPage.clickButtonSingIn();
     }
 
     @Test
     public void testLoginWithAnyEmailAndPassword() {
-        WebElement inputEmail = driver.findElement(By.xpath(dominosPage.inputEmailAddressXpath));
-        inputEmail.sendKeys("test@mail.com");
-
-        WebElement inputPassword = driver.findElement(By.xpath(dominosPage.inputPasswordXpath));
-        inputPassword.sendKeys("12345");
-
-        WebElement buttonSingIn = driver.findElement(By.xpath(dominosPage.buttonSingInXpath));
-        buttonSingIn.click();
+        dominosPage.sendKeysInputEmailAddress(Util.generateEmail());
+        dominosPage.sendKeysInputPassword(Util.generatePassword());
+        dominosPage.clickButtonSingIn();
     }
 
     @AfterEach
