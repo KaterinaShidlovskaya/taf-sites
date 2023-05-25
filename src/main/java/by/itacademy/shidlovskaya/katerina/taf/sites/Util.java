@@ -9,7 +9,7 @@ public class Util {
 
     public static String generatePassword(){
         String[] elements = {"a", "b", "!", "7", "A", "#", "$", "C", "K", "1","5", "E","w","q" };
-       return chooseRandomElement(elements, 9);
+       return chooseRandomElement(elements, 12);
     }
 
     public static String chooseRandomElement(String[]array, int numberOfChars){
