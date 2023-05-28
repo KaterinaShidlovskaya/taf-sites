@@ -6,30 +6,35 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PizzatempoPage {
     private ChromeDriver driver;
-    private String inputEmailAddressXpath = "/html/body/div/div[1]/form/p[1]/input";
-    private String inputPasswordXpath = "/html/body/div/div[1]/form/p[2]/input[1]";
-    private String buttonSearchXpath = "/html/body/div/div[1]/form/p[2]/input[2]";
+    private String inputEmailAddressName = "astroauth_login";
+    private String inputPasswordName = "astroauth_pass";
+    private String buttonSearchName = "astroauth_submit";
     private String baseURL = "https://www.pizzatempo.by/";
 
     public PizzatempoPage(ChromeDriver newDriver) {
         driver = newDriver;
     }
 
-   public void openBaseURL(){
-       driver.get(baseURL);
-   }
+    public void openBaseURL() {
+        driver.manage().window().maximize();
+        driver.get(baseURL);
+    }
+    public void quitDriver(){
+        driver.quit();
+    }
+
     public void clickButtonSearch() {
-        WebElement buttonSearch = driver.findElement(By.xpath(buttonSearchXpath));
+        WebElement buttonSearch = driver.findElement(By.name(buttonSearchName));
         buttonSearch.click();
     }
 
     public void sendKeysInputEmailAddress(String email) {
-        WebElement inputEmail = driver.findElement(By.xpath(inputEmailAddressXpath));
+        WebElement inputEmail = driver.findElement(By.name(inputEmailAddressName));
         inputEmail.sendKeys(email);
     }
 
-    public void sendKeysInputPassword(String password){
-        WebElement inputPassword = driver.findElement(By.xpath(inputPasswordXpath));
+    public void sendKeysInputPassword(String password) {
+        WebElement inputPassword = driver.findElement(By.name(inputPasswordName));
         inputPassword.sendKeys(password);
     }
 }

@@ -7,48 +7,42 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PizzatempoTest {
     ChromeDriver driver;
-    PizzatempoPage pizzatempoPage;
+    PizzatempoStep pizzatempoStep;
 
     @BeforeEach
     public void warmUp() {
         driver = new ChromeDriver();
-        pizzatempoPage = new PizzatempoPage(driver);
-        driver.manage().window().maximize();
-        pizzatempoPage.openBaseURL();
+        pizzatempoStep = new PizzatempoStep(driver);
+        pizzatempoStep.getURLAndMaximizeWindowInChrome();
     }
 
     @Test
     public void testLoginWithEmptyData() {
-        pizzatempoPage.clickButtonSearch();
+        pizzatempoStep.fillLoninFormWithEmptyData();
     }
 
     @Test
     public void testLoginWithIncorrectEmail() {
-        pizzatempoPage.sendKeysInputEmailAddress("email");
-        pizzatempoPage.clickButtonSearch();
+        pizzatempoStep.fillLoginFormWithIncorrectEmailAndSubmit(Util.generateInvalidEmail());
     }
 
     @Test
     public void testLoginWithAnyPassword() {
-        pizzatempoPage.sendKeysInputPassword(Util.generatePassword());
-        pizzatempoPage.clickButtonSearch();
+        pizzatempoStep.fillLoginFormWithAnyPassword(Util.generatePassword());
     }
 
     @Test
     public void testLoginWithCorrectEmailAndEmptyPassword() {
-        pizzatempoPage.sendKeysInputEmailAddress(Util.generateEmail());
-        pizzatempoPage.clickButtonSearch();
+        pizzatempoStep.fillLoginFormAndSubmit(Util.generateEmail(), "");
     }
 
     @Test
     public void testLoginWithCorrectEmailAndAnyPassword() {
-        pizzatempoPage.sendKeysInputEmailAddress(Util.generateEmail());
-        pizzatempoPage.sendKeysInputPassword(Util.generatePassword());
-        pizzatempoPage.clickButtonSearch();
+        pizzatempoStep.fillLoginFormAndSubmit(Util.generateEmail(), Util.generatePassword());
     }
 
     @AfterEach
     public void tearsDown() {
-        driver.quit();
+        pizzatempoStep.finishTheWork();
     }
 }
