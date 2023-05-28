@@ -8,34 +8,27 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DominosTest {
     ChromeDriver driver;
-    DominosPage dominosPage;
+    DominosStep dominosStep;
 
     @BeforeEach
     public void warmUp() {
         driver = new ChromeDriver();
-        dominosPage = new DominosPage(driver);
-        driver.manage().window().maximize();
-        dominosPage.openBaseURL();
-        dominosPage.clickButtonPopUpClose();
-        dominosPage.clickButtonLogin();
+        dominosStep = new DominosStep(driver);
+        dominosStep.openURLAndClickButtonLogin();
     }
 
     @Test
     public void testLoginWithIncorrectEmailAndAnyPassword() {
-        dominosPage.sendKeysInputEmailAddress("email");
-        dominosPage.sendKeysInputPassword(Util.generatePassword());
-        dominosPage.clickButtonSingIn();
+       dominosStep.fillLoginFormWithInvalidEmailAndAnyPassword(Util.generateInvalidEmail(),Util.generatePassword());
     }
 
     @Test
     public void testLoginWithAnyEmailAndPassword() {
-        dominosPage.sendKeysInputEmailAddress(Util.generateEmail());
-        dominosPage.sendKeysInputPassword(Util.generatePassword());
-        dominosPage.clickButtonSingIn();
+        dominosStep.fillLoginFormWithAnyEmailAndPassword(Util.generateEmail(),Util.generatePassword());
     }
 
     @AfterEach
     public void tearsDown() {
-        driver.quit();
+        dominosStep.finishTheWork();
     }
 }
