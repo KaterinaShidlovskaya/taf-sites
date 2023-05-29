@@ -14,6 +14,7 @@ public class DominosTest {
     public void warmUp() {
         driver = new ChromeDriver();
         dominosStep = new DominosStep(driver);
+        driver.manage().window().maximize();
         dominosStep.openURLAndClickButtonLogin();
     }
 
@@ -29,6 +30,6 @@ public class DominosTest {
 
     @AfterEach
     public void tearsDown() {
-        dominosStep.finishTheWork();
+        driver.quit();
     }
 }

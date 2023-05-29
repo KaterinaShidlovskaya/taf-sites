@@ -20,7 +20,7 @@ public class PizzatempoStep {
         page.clickButtonSearch();
     }
 
-    public void fillLoninFormWithEmptyData() {
+    public void fillLoginFormWithEmptyData() {
         page.clickButtonSearch();
     }
 
@@ -32,9 +32,5 @@ public class PizzatempoStep {
     public void fillLoginFormWithAnyPassword(String password) {
         page.sendKeysInputPassword(password);
         page.clickButtonSearch();
-    }
-
-    public void finishTheWork() {
-        page.quitDriver();
     }
 }

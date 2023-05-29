@@ -12,11 +12,12 @@ public class BookingPage {
 
     private ChromeDriver driver;
 
-    private String buttonLoginXpath = "//*[@id='b2indexPage']/div[22]/div/div/div/div[2]/div/a";
-    private String inputEmailAddressXpath = "//*[@id='username']";
-    private String buttonContinueWithEmailXpath = "//*[@id='root']/div/div/div/div[2]/div[1]/div/div/div/div/div/div/form/div[3]/button";
-    private String inputPasswordXpath = "//*[@id='password']";
-    private String buttonSingInXpath = "//*[@id='root']/div/div/div/div[2]/div[1]/div/div/div/div/div/div/form/div[2]/button";
+    private String buttonLoginXpath = "//a[@ class='fc63351294 a822bdf511 d4b6b7a9e7 cfb238afa1 c938084447 f4605622ad']";
+    private String inputEmailAddressName = "username";
+    private String buttonContinueWithEmailXpath = "//button[@type='submit']";
+    private String inputNewPasswordName = "new_password";
+    private String inputConfirmedPasswordName = "confirmed_password";
+    private String buttonSingInXpath = "//button[@type='submit']";
     private String baseURL = "https://www.booking.com/";
 
     public BookingPage(ChromeDriver newDriver) {
@@ -39,13 +40,13 @@ public class BookingPage {
     }
 
     public void sendKeysInputEmailAddress(String email) {
-        WebElement inputEmailAddress = driver.findElement(By.xpath(inputEmailAddressXpath));
+        WebElement inputEmailAddress = driver.findElement(By.name(inputEmailAddressName));
         inputEmailAddress.sendKeys(email);
     }
 
     public void sendKeysInputPassword(String password) {
         WebElement inputPassword = (new WebDriverWait(driver, Duration.ofSeconds(10)).
-                until(ExpectedConditions.elementToBeClickable(By.xpath(inputPasswordXpath))));
+                until(ExpectedConditions.elementToBeClickable(By.name(inputNewPasswordName))));
         inputPassword.sendKeys(password);
     }
 

@@ -23,7 +23,4 @@ public class DominosStep {
         page.sendKeysInputPassword(password);
         page.clickButtonSingIn();
     }
-    public void finishTheWork(){
-        page.quitDriver();
-    }
 }

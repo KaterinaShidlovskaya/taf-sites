@@ -13,12 +13,13 @@ public class PizzatempoTest {
     public void warmUp() {
         driver = new ChromeDriver();
         pizzatempoStep = new PizzatempoStep(driver);
+        driver.manage().window().maximize();
         pizzatempoStep.getURLAndMaximizeWindowInChrome();
     }
 
     @Test
     public void testLoginWithEmptyData() {
-        pizzatempoStep.fillLoninFormWithEmptyData();
+        pizzatempoStep.fillLoginFormWithEmptyData();
     }
 
     @Test
@@ -43,6 +44,6 @@ public class PizzatempoTest {
 
     @AfterEach
     public void tearsDown() {
-        pizzatempoStep.finishTheWork();
+        driver.quit();
     }
 }

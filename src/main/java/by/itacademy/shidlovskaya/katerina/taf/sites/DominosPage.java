@@ -18,12 +18,7 @@ public class DominosPage {
     }
 
     public void openBaseURL() {
-        driver.manage().window().maximize();
         driver.get(baseURL);
-    }
-
-    public void quitDriver() {
-        driver.quit();
     }
 
     public void clickButtonLogin() {
