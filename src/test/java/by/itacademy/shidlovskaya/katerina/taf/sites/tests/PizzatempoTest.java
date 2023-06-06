@@ -1,9 +1,14 @@
-package by.itacademy.shidlovskaya.katerina.taf.sites;
+package by.itacademy.shidlovskaya.katerina.taf.sites.tests;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import by.itacademy.shidlovskaya.katerina.taf.sites.steps.PizzatempoStep;
+import by.itacademy.shidlovskaya.katerina.taf.sites.utils.Util;
 
 public class PizzatempoTest {
     ChromeDriver driver;
@@ -28,8 +33,8 @@ public class PizzatempoTest {
     }
 
     @Test
-    public void testLoginWithAnyPassword() {
-        pizzatempoStep.fillLoginFormWithAnyPassword(Util.generatePassword());
+    public void testLoginWithSomePassword() {
+        pizzatempoStep.fillLoginFormWithSomePassword(Util.generatePassword());
     }
 
     @Test
@@ -38,8 +43,10 @@ public class PizzatempoTest {
     }
 
     @Test
-    public void testLoginWithCorrectEmailAndAnyPassword() {
+    public void testLoginWithCorrectEmailAndSomePassword() {
         pizzatempoStep.fillLoginFormAndSubmit(Util.generateEmail(), Util.generatePassword());
+        String actualText = pizzatempoStep.getActualErrorMessage();
+        Assertions.assertEquals(actualText, "Неверно указано имя пользователя или пароль.");
     }
 
     @AfterEach

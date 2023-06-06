@@ -1,4 +1,4 @@
-package by.itacademy.shidlovskaya.katerina.taf.sites;
+package by.itacademy.shidlovskaya.katerina.taf.sites.utils;
 
 import com.github.javafaker.Faker;
 

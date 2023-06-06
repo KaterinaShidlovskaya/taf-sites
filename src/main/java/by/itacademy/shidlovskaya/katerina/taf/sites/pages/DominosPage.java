@@ -1,4 +1,4 @@
-package by.itacademy.shidlovskaya.katerina.taf.sites;
+package by.itacademy.shidlovskaya.katerina.taf.sites.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,6 +12,7 @@ public class DominosPage {
     private String inputPasswordName = "password";
     private String buttonSingInXpath = "//button[@type='submit']";
     private String baseURL = "https://dominos.by/";
+    private String textErrorMessage = "/html/body/div[4]/div[2]/div[1]/div/div[2]";
 
     public DominosPage(ChromeDriver newDriver) {
         driver = newDriver;
@@ -44,5 +45,11 @@ public class DominosPage {
     public void clickButtonSingIn() {
         WebElement buttonSingIn = driver.findElement(By.xpath(buttonSingInXpath));
         buttonSingIn.click();
+    }
+
+    public String getTextErrorMessage(){
+        WebElement textErrorMessageElement = driver.findElement(By.xpath(textErrorMessage));
+        String actualErrorMessage = textErrorMessageElement.getText();
+        return actualErrorMessage;
     }
 }

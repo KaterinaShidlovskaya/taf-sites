@@ -1,5 +1,6 @@
-package by.itacademy.shidlovskaya.katerina.taf.sites;
+package by.itacademy.shidlovskaya.katerina.taf.sites.steps;
 
+import by.itacademy.shidlovskaya.katerina.taf.sites.pages.DominosPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DominosStep {
@@ -13,7 +14,7 @@ public class DominosStep {
         page.clickButtonPopUpClose();
         page.clickButtonLogin();
     }
-    public void fillLoginFormWithInvalidEmailAndAnyPassword(String invalidEmail, String password) {
+    public void fillLoginFormWithInvalidEmailAndSomePassword(String invalidEmail, String password) {
         page.sendKeysInputEmailAddress(invalidEmail);
         page.sendKeysInputPassword(password);
         page.clickButtonSingIn();
@@ -22,5 +23,9 @@ public class DominosStep {
         page.sendKeysInputEmailAddress(email);
         page.sendKeysInputPassword(password);
         page.clickButtonSingIn();
+    }
+    public String getActualErrorMessage(){
+        String actualErrorMessage = page.getTextErrorMessage();
+        return actualErrorMessage;
     }
 }

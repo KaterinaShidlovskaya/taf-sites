@@ -1,4 +1,4 @@
-package by.itacademy.shidlovskaya.katerina.taf.sites;
+package by.itacademy.shidlovskaya.katerina.taf.sites.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,6 +10,7 @@ public class PizzatempoPage {
     private String inputPasswordName = "astroauth_pass";
     private String buttonSearchName = "astroauth_submit";
     private String baseURL = "https://www.pizzatempo.by/";
+ String actualErrorMessageXPath = "//*[@id=\'alert\']/div[2]/div[2]/text()";
 
     public PizzatempoPage(ChromeDriver newDriver) {
         driver = newDriver;
@@ -32,5 +33,9 @@ public class PizzatempoPage {
     public void sendKeysInputPassword(String password) {
         WebElement inputPassword = driver.findElement(By.name(inputPasswordName));
         inputPassword.sendKeys(password);
+    }
+    public String getTextOfActualErrorMessage(){
+        WebElement textOfErrorMessage = driver.findElement(By.xpath(actualErrorMessageXPath));
+        return textOfErrorMessage.getText();
     }
 }

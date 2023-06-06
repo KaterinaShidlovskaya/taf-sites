@@ -1,5 +1,6 @@
-package by.itacademy.shidlovskaya.katerina.taf.sites;
+package by.itacademy.shidlovskaya.katerina.taf.sites.steps;
 
+import by.itacademy.shidlovskaya.katerina.taf.sites.pages.PizzatempoPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PizzatempoStep {
@@ -29,8 +30,12 @@ public class PizzatempoStep {
         page.clickButtonSearch();
     }
 
-    public void fillLoginFormWithAnyPassword(String password) {
+    public void fillLoginFormWithSomePassword(String password) {
         page.sendKeysInputPassword(password);
         page.clickButtonSearch();
+    }
+
+    public String getActualErrorMessage() {
+        return page.getTextOfActualErrorMessage();
     }
 }

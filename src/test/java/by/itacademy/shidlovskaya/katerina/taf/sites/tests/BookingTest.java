@@ -1,4 +1,4 @@
-package by.itacademy.shidlovskaya.katerina.taf.sites;
+package by.itacademy.shidlovskaya.katerina.taf.sites.tests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import by.itacademy.shidlovskaya.katerina.taf.sites.pages.BookingPage;
+import by.itacademy.shidlovskaya.katerina.taf.sites.utils.Util;
 
 import java.time.Duration;
 
