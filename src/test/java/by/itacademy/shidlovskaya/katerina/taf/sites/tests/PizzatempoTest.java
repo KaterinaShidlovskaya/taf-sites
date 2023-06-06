@@ -44,7 +44,7 @@ public class PizzatempoTest {
     public void testLoginWithCorrectEmailAndSomePassword() {
         pizzatempoStep.fillLoginFormAndSubmit(Util.generateEmail(), Util.generatePassword());
         String actualText = pizzatempoStep.getActualErrorMessage();
-        Assertions.assertEquals(actualText, "Неверно указано имя пользователя или пароль.");
+        Assertions.assertEquals(actualText, "Неверно указано имя пользователя или пароль.\n"+"Ok");
     }
 
     @AfterEach

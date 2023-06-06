@@ -10,7 +10,7 @@ public class PizzatempoPage {
     private String inputPasswordName = "astroauth_pass";
     private String buttonSearchName = "astroauth_submit";
     private String baseURL = "https://www.pizzatempo.by/";
- String actualErrorMessageXPath = "//*[@id=\'alert\']/div[2]/div[2]/text()";
+ String actualErrorMessageXPath = "//*[@id=\'alert\']/div[2]/div[2]";
 
     public PizzatempoPage(ChromeDriver newDriver) {
         driver = newDriver;
