@@ -11,28 +11,33 @@ public class PizzatempoStep {
         page = new PizzatempoPage(driver);
     }
 
-    public void getURLAndMaximizeWindowInChrome() {
+    public PizzatempoStep getURLAndMaximizeWindowInChrome() {
         page.openBaseURL();
+        return this;
     }
 
-    public void fillLoginFormAndSubmit(String email, String password) {
-        page.sendKeysInputEmailAddress(email);
-        page.sendKeysInputPassword(password);
-        page.clickButtonSearch();
+    public PizzatempoStep fillLoginFormAndSubmit(String email, String password) {
+        page.sendKeysInputEmailAddress(email)
+                .sendKeysInputPassword(password)
+                .clickButtonSearch();
+        return this;
     }
 
-    public void fillLoginFormWithEmptyData() {
+    public PizzatempoStep fillLoginFormWithEmptyData() {
         page.clickButtonSearch();
+        return this;
     }
 
-    public void fillLoginFormWithIncorrectEmailAndSubmit(String email) {
-        page.sendKeysInputEmailAddress(email);
-        page.clickButtonSearch();
+    public PizzatempoStep fillLoginFormWithIncorrectEmailAndSubmit(String email) {
+        page.sendKeysInputEmailAddress(email)
+                .clickButtonSearch();
+        return this;
     }
 
-    public void fillLoginFormWithSomePassword(String password) {
-        page.sendKeysInputPassword(password);
-        page.clickButtonSearch();
+    public PizzatempoStep fillLoginFormWithSomePassword(String password) {
+        page.sendKeysInputPassword(password)
+                .clickButtonSearch();
+        return this;
     }
 
     public String getActualErrorMessage() {

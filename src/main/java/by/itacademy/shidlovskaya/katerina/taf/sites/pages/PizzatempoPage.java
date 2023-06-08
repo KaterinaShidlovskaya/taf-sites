@@ -10,31 +10,36 @@ public class PizzatempoPage {
     private String inputPasswordName = "astroauth_pass";
     private String buttonSearchName = "astroauth_submit";
     private String baseURL = "https://www.pizzatempo.by/";
- String actualErrorMessageXPath = "//*[@id=\'alert\']/div[2]/div[2]";
+    String actualErrorMessageXPath = "//*[@id=\'alert\']/div[2]/div[2]";
 
     public PizzatempoPage(ChromeDriver newDriver) {
         driver = newDriver;
     }
 
-    public void openBaseURL() {
+    public PizzatempoPage openBaseURL() {
         driver.get(baseURL);
+        return this;
     }
 
-    public void clickButtonSearch() {
+    public PizzatempoPage clickButtonSearch() {
         WebElement buttonSearch = driver.findElement(By.name(buttonSearchName));
         buttonSearch.click();
+        return this;
     }
 
-    public void sendKeysInputEmailAddress(String email) {
+    public PizzatempoPage sendKeysInputEmailAddress(String email) {
         WebElement inputEmail = driver.findElement(By.name(inputEmailAddressName));
         inputEmail.sendKeys(email);
+        return this;
     }
 
-    public void sendKeysInputPassword(String password) {
+    public PizzatempoPage sendKeysInputPassword(String password) {
         WebElement inputPassword = driver.findElement(By.name(inputPasswordName));
         inputPassword.sendKeys(password);
+        return this;
     }
-    public String getTextOfActualErrorMessage(){
+
+    public String getTextOfActualErrorMessage() {
         WebElement textOfErrorMessage = driver.findElement(By.xpath(actualErrorMessageXPath));
         return textOfErrorMessage.getText();
     }
