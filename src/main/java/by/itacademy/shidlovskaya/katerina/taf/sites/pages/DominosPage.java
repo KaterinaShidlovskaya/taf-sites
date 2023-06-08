@@ -18,33 +18,39 @@ public class DominosPage {
         driver = newDriver;
     }
 
-    public void openBaseURL() {
+    public DominosPage openBaseURL() {
         driver.get(baseURL);
+        return this;
     }
 
-    public void clickButtonLogin() {
+    public DominosPage clickButtonLogin() {
         WebElement buttonLogin = driver.findElement(By.xpath(buttonLoginXpath));
         buttonLogin.click();
+        return this;
     }
 
-    public void clickButtonPopUpClose() {
+    public DominosPage clickButtonPopUpClose() {
         WebElement buttonPopUpClose = driver.findElement(By.xpath(buttonPopUpCloseXpath));
         buttonPopUpClose.click();
+        return this;
     }
 
-    public void sendKeysInputEmailAddress(String email) {
+    public DominosPage sendKeysInputEmailAddress(String email) {
         WebElement inputEmail = driver.findElement(By.name(inputEmailAddressName));
         inputEmail.sendKeys(email);
+        return this;
     }
 
-    public void sendKeysInputPassword(String password) {
+    public DominosPage sendKeysInputPassword(String password) {
         WebElement inputPassword = driver.findElement(By.name(inputPasswordName));
         inputPassword.sendKeys(password);
+        return this;
     }
 
-    public void clickButtonSingIn() {
+    public DominosPage clickButtonSingIn() {
         WebElement buttonSingIn = driver.findElement(By.xpath(buttonSingInXpath));
         buttonSingIn.click();
+        return this;
     }
 
     public String getTextErrorMessage(){
